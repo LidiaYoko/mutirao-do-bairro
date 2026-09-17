@@ -12,3 +12,11 @@
   font-weight: 700;
   letter-spacing: 0.12em;
 }
+.concluida {
+  text-decoration: line-through;
+  color: rgb(91, 184, 67);
+}
+.pendente {
+  font-weight: bold;
+  color:crimson
+}

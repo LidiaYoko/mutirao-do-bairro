@@ -1,5 +1,6 @@
 import "./App.css";
-
+import Painel from "./components/Painel";
+import ListaTarefas from "./components/ListaTarefas";
 /*
   MUTIRÃO DO BAIRRO — ponto de partida.
 
@@ -32,6 +33,13 @@ export default function App() {
           Agora abra o ATIVIDADE.md e comece pela etapa E1.
         </p>
       </header>
+      <Painel>
+        <h1>Mutirão do Bairro</h1>
+        <p>Bem-vinda ao painel de tarefas</p>
+      </Painel>
+      <Painel>
+        <ListaTarefas />
+      </Painel>
     </main>
   );
 }
