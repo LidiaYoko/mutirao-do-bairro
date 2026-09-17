@@ -1,23 +1,23 @@
 
-import { tarefasIniciais } from "../data/tarefas";
 import CartaoTarefa from "./CartaoTarefa";
 
-export default function ListaTarefas({ tarefas, onConcluir }) {
+export default function ListaTarefas({ tarefas, onConcluir, onExcluir }) {
 
 
-  if (tarefasIniciais.length === 0) {
+  if (tarefas.length === 0) {
     return <p>Nenhuma tarefa cadastrada</p>
   }
 
   return (
     <>
-      {tarefasIniciais.map((tarefa) => (
+      {tarefas.map((tarefa) => (
         <CartaoTarefa
           key={tarefa.id}
           tarefa={tarefa}
           onConcluir={onConcluir}
+          onExcluir={onExcluir}
         />
       ))}
     </>
-  )
+  );
 }

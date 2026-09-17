@@ -26,26 +26,38 @@ import { tarefasIniciais } from "./data/tarefas";
 
 export default function App() {
 
-  const [tarefas, setTarefas] = useState(tarefasIniciais) 
-function marcarConcluida(id) {
-  setTarefas(
-    tarefas.map(tarefa =>
-      tarefa.id === id
-      ? {...tarefa,concluida: !tarefa.concluida }
-      : tarefa
+  const [tarefas, setTarefas] = useState(tarefasIniciais)
+
+  function marcarConcluida(id) {
+    setTarefas(
+      tarefas.map(tarefa =>
+        tarefa.id === id
+          ? { ...tarefa, concluida: !tarefa.concluida }
+          : tarefa
+      )
     )
-  )
-}
+  }
+  function excluirTarefa(id) {
+    setTarefas(
+      tarefas.filter(tarefa => tarefa.id !== id)
+    )
+  }
+
+  const totalConcluidas = tarefas.filter(
+    tarefa => tarefa.concluida
+  ).length
+
   return (
-  
+
     <main className="app">
       <Painel>
         <h1>Mutirão do Bairro</h1>
         <p>ACOMPANHE AS TAREFAS DO NOSSO MUTIRÃO</p>
       </Painel>
       <Painel>
-        <ListaTarefas tarefa={tarefas}
-        onConcluir={marcarConcluida}
+        <ListaTarefas tarefas={tarefas}
+          onConcluir={marcarConcluida}
+          onExcluir={excluirTarefa}
         />
       </Painel>
     </main>
