@@ -2,7 +2,7 @@
 import { tarefasIniciais } from "../data/tarefas";
 import CartaoTarefa from "./CartaoTarefa";
 
-export default function ListaTarefas() {
+export default function ListaTarefas({ tarefas, onConcluir }) {
 
 
   if (tarefasIniciais.length === 0) {
@@ -10,9 +10,14 @@ export default function ListaTarefas() {
   }
 
   return (
-    tarefasIniciais.map((tarefa) => (
-      <CartaoTarefa key={tarefa.id} dados={tarefa} />
-
-    ))
-  );
+    <>
+      {tarefasIniciais.map((tarefa) => (
+        <CartaoTarefa
+          key={tarefa.id}
+          tarefa={tarefa}
+          onConcluir={onConcluir}
+        />
+      ))}
+    </>
+  )
 }

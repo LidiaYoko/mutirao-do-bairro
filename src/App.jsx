@@ -1,6 +1,8 @@
+import { useState } from "react";
 import "./App.css";
 import Painel from "./components/Painel";
 import ListaTarefas from "./components/ListaTarefas";
+import { tarefasIniciais } from "./data/tarefas";
 /*
   MUTIRÃO DO BAIRRO — ponto de partida.
 
@@ -23,22 +25,28 @@ import ListaTarefas from "./components/ListaTarefas";
 */
 
 export default function App() {
+
+  const [tarefas, setTarefas] = useState(tarefasIniciais) 
+function marcarConcluida(id) {
+  setTarefas(
+    tarefas.map(tarefa =>
+      tarefa.id === id
+      ? {...tarefa,concluida: !tarefa.concluida }
+      : tarefa
+    )
+  )
+}
   return (
+  
     <main className="app">
-      <header className="hero">
-        <p className="eyebrow">MUTIRÃO DO BAIRRO</p>
-        <h1>Ponto de partida</h1>
-        <p>
-          Se você está lendo isto no navegador, o ambiente está funcionando.
-          Agora abra o ATIVIDADE.md e comece pela etapa E1.
-        </p>
-      </header>
       <Painel>
         <h1>Mutirão do Bairro</h1>
-        <p>Bem-vinda ao painel de tarefas</p>
+        <p>ACOMPANHE AS TAREFAS DO NOSSO MUTIRÃO</p>
       </Painel>
       <Painel>
-        <ListaTarefas />
+        <ListaTarefas tarefa={tarefas}
+        onConcluir={marcarConcluida}
+        />
       </Painel>
     </main>
   );

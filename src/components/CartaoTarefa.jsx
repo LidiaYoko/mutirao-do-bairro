@@ -1,8 +1,13 @@
-export default function CartaoTarefa({ dados }) {
-  
+export default function CartaoTarefa({ tarefa, onConcluir }) {
+
   return (
-    <article className={dados.concluida ? "concluida" : "pendente"}>
-      {dados.titulo}
-    </article>
-  );
+    <div>
+      <h3>{tarefa.titulo}</h3>
+
+   
+    <button onClick={() => onConcluir(tarefa.id)}>
+      {tarefa.concluida ? "Desmarcar" : "Concluir"}
+    </button>
+     </div>
+  )
 }
